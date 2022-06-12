@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src=https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.3.0/math.min.js></script>
+</head>
+
+<body>
+    <div class="container fadeInLeft" id = "introBanner">
+        <h1 id="introTitle" style="font-weight: bolder;">The Mandelbrot Set</h1>
+        <br>
+        <h1 id="introTitle" style="font-style: italic; font-size: 35px;">Voyager</h1>
+    </div>
+
+
+    <canvas id="mainCanvas"></canvas>
+    <script src="js/scripts.js"></script>
+
+    <div  id="imgHolder">
+      <img src="includes/download (4).png">
+    </div>
+    
+
+
+    <div class="container" id="controller" onchange="getSettingData()">
+      <h3>Colour Sensitivity Slider</h3>
+      <input type="range" min="0" max="5" value="1" step="0.1" class="slider" id="colourSensitivity">
+      <p>Value: <span id="colourSensitivityVal"></span></p>
+
+      <h3>Modify the Multiplier in the Iterative Sequence</h3>
+      <input type="range" min="0" max="5" value="1" step="0.1" class="slider" id="it">
+      <p>Value: <span id="itVal"></span></p>
+
+      <h3>Change the starting "z" value</h3>
+      <input type="range" min="0" max="5" value="0" step="0.1" class="slider" id="it2">
+      <p>Value: <span id="it2Val"></span></p>
+
+      <button onclick="window.location.reload();">Reset</button>
+    </div>
+    <!-- width="0" height="0"-->
+    <script>
+      document.getElementById("colourSensitivityVal").innerHTML = document.getElementById("colourSensitivity").value;
+      document.getElementById("itVal").innerHTML = document.getElementById("it").value;
+      document.getElementById("it2Val").innerHTML = document.getElementById("it2").value;
+    </script>
+    
+</body>
+
+
+</html>
