@@ -1,3 +1,7 @@
+body {
+    overflow: hidden;
+}
+
 #mainCanvas {
     /*background-color: gainsboro;*/
     background-color: black;

@@ -134,7 +134,7 @@ function main() {
         //target_zoom_center[0] = //zoom_center[0] - zoom_size / 2.0 + x_part * zoom_size;
         //target_zoom_center[1] = //zoom_center[1] + zoom_size / 2.0 - y_part * zoom_size;
         stop_zooming = false;
-        zoom_factor = e.deltaY > 0 ? 0.99 : 1.01;
+        zoom_factor = e.deltaY > 0 ? 0.999 : 1.01;
         renderFrame();
         timer = setTimeout(function() {
             stop_zooming = true;
@@ -143,10 +143,21 @@ function main() {
         return true;
       });
 
+      var pressed = false;
+      var originalPos = {x:0,y:0};
+      var deltaPos = {x:0,y:0};
+
       canvas_element.oncontextmenu = function(e){return false;}
-      canvas_element.onmouseup = function(e) { stop_zooming = true; }
+      canvas_element.onmouseup = function(e) { stop_zooming = true; pressed = false;}
       
       document.onmousemove = function(e) {
+        if (pressed) {
+          zoom_center[0] += originalPos.x - e.clientX
+          zoom_center[1] += originalPos.y - e.clientY
+
+          originalPos.x = e.clientX
+          originalPos.y = e.clientY;
+        }
         var x_part = e.pageX / canvas_element.width;
         var y_part = e.pageY / canvas_element.height;
         
@@ -154,6 +165,14 @@ function main() {
         target_zoom_center[1] = zoom_center[1] + zoom_size / 2.0 - y_part * zoom_size;
       }
 
+      canvas_element.onmousedown = function(e) {
+        pressed = true;
+        originalPos.x = e.clientX
+        originalPos.y = e.clientY;
+
+        zoom_center[0]+=canvas_element.deltaX;
+        zoom_center[1]+=canvas_element.deltaY;
+      };
       window.onresize = function(){ location.reload(); }
 
       
@@ -245,7 +264,7 @@ function main() {
 
     /* OG SHADER: #vec4(palette(float(iterations)/float(u_maxIterations), vec3(0.0),vec3(0.59,0.55,0.75),vec3(0.1, 0.2, 0.3),vec3(0.75)),1.0) : vec4(vec3(0.85, 0.99, 1.0), 1.0); */
     /* compile and link shaders */
-    var vertexShader = gl.createShader(gl.VERTEX_SHADER);
+    var vertexShader = gl.createShader(gl.VEeRTEX_SHADER);
     var fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
 
     gl.shaderSource(vertexShader, vertexShaderCode);
@@ -332,6 +351,7 @@ function main() {
       canvas_element.onmouseup = function(e) { stop_zooming = true; }
       
       document.onmousemove = function(e) {
+
         var x_part = e.pageX / canvas_element.width;
         var y_part = e.pageY / canvas_element.height;
         
