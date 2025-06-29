@@ -1,4 +1,12 @@
+let animationFrameId = null;
+let gl = null;
+
 function getSettingData() {
+    if (animationFrameId !== null) {
+    cancelAnimationFrame(animationFrameId);
+    animationFrameId = null;
+    }
+
       document.getElementById("itVal").innerHTML = document.getElementById("it").value;
       document.getElementById("it2Val").innerHTML = document.getElementById("it2").value;
       main();
@@ -121,11 +129,9 @@ function main() {
             zoom_center[0] += 0.1 * (target_zoom_center[0] - zoom_center[0]);
             zoom_center[1] += 0.1 * (target_zoom_center[1] - zoom_center[1]);
 
-            window.requestAnimationFrame(renderFrame);
-        } else {
-            window.requestAnimationFrame(renderFrame);
         }
-    }
+        animationFrameId = requestAnimationFrame(renderFrame);
+        }
 
     // Optional: Keep target zoom center under mouse
     document.onmousemove = function(e) {
