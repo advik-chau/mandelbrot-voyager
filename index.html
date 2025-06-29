@@ -20,7 +20,6 @@
 
 
     <canvas id="mainCanvas"></canvas>
-    <script src="js/scripts.js"></script>
 
     <div  id="imgHolder">
       <img src="includes/download (4).png">
@@ -32,26 +31,26 @@
 
     <div class="container" id="controller" onchange="getSettingData()">
         <h3  style="font-style: italic; font-size: 20px;">Press space to pause auto-zoom.</h1>
-      <h3>Colour Sensitivity Slider</h3>
+      <!-- <h3>Colour Sensitivity Slider</h3>
       <input type="range" min="0" max="5" value="1" step="0.1" class="slider" id="colourSensitivity">
-      <p>Value: <span id="colourSensitivityVal"></span></p>
-
-      <h3>Modify the Multiplier in the Iterative Sequence</h3>
-      <input type="range" min="0" max="5" value="1" step="0.1" class="slider" id="it">
-      <p>Value: <span id="itVal"></span></p>
+      <p>Value: <span id="colourSensitivityVal"></span></p> -->
 
       <h3>Change the starting "z" value</h3>
-      <input type="range" min="0" max="5" value="0" step="0.1" class="slider" id="it2">
+      <input type="range" min="0" max="1" value="0.0" step="0.01" class="slider" id="it2">
       <p>Value: <span id="it2Val"></span></p>
 
-      <button onclick="window.location.reload();">Reset</button>
+      <h3>Modify the Multiplier in the Iterative Sequence</h3>
+      <input type="range" min="1" max="10" value="1.3" step="0.1" class="slider" id="it">
+      <p>Value: <span id="itVal"></span></p>
+
+
+      <!-- <button onclick="window.location.reload();">Reset</button> -->
     </div>
     <!-- width="0" height="0"-->
     <script>
-      document.getElementById("colourSensitivityVal").innerHTML = document.getElementById("colourSensitivity").value;
-      document.getElementById("itVal").innerHTML = document.getElementById("it").value;
-      document.getElementById("it2Val").innerHTML = document.getElementById("it2").value;
+    //   document.getElementById("colourSensitivityVal").innerHTML = document.getElementById("colourSensitivity").value;
     </script>
+    <script src="js/scripts.js"></script>
     
 </body>
 
