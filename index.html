@@ -2,7 +2,7 @@
 <html lang="en">
     
 <head>
-  <title>Bootstrap Example</title>
+  <title>Mandelbrot Explorer</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -14,9 +14,8 @@
 
 <body>
     <div class="container fadeInLeft" id = "introBanner">
-        <h1 id="introTitle" style="font-weight: bolder;">The Mandelbrot Set</h1>
+        <h1 id="introTitle" style="font-weight: bolder;">The Mandelbrot Set <br> Voyager</h1>
         <br>
-        <h1 id="introTitle" style="font-style: italic; font-size: 35px;">Voyager</h1>
     </div>
 
 
@@ -27,9 +26,12 @@
       <img src="includes/download (4).png">
     </div>
     
-
+    <div id="zoom-warning" style="margin: auto; top: 70%; left: 50%; background-color: rgba(128, 128, 128, 0.598); display: none; width: max-content; border-radius: 5px;">
+        <h3   style="font-style: italic; font-size: 20px; color: red; ">Max zoom depth - WebGL floating point precision limit. <br> Refresh to restart.</h1>
+    </div>
 
     <div class="container" id="controller" onchange="getSettingData()">
+        <h3  style="font-style: italic; font-size: 20px;">Press space to pause auto-zoom.</h1>
       <h3>Colour Sensitivity Slider</h3>
       <input type="range" min="0" max="5" value="1" step="0.1" class="slider" id="colourSensitivity">
       <p>Value: <span id="colourSensitivityVal"></span></p>
